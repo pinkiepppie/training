@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="训练">
+<meta name="theme-color" content="#111111">
+<link rel="apple-touch-icon" sizes="180x180" href="data:image/png;base64,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">
+<link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAAjBElEQVR42u1deVyUZR5/r7lhBhBUNM0DTfHYBGxBEy2RFNI2t7St9cBMY9e0Uis7vCotO8zdEtzCo1hN00wF8YJEkJFTwYNEBFxQGZgZGOae95139o/f9n5muXy5ZhCf3x9+0mbe9533+T7f3/H8Dtzb2xtDgqQ5IdArQILAgQSBAwkCBxIEDiQIHEgQOJAgcCBB4ECCwIEEgQMJEgQOJAgcSBA4kCBwIEHgQILAgQSBAwkCBxIEDiQIHEiQIHAgQeBAgsCBBIEDCQIHEgQOJAgcSBA4kCBwIEHgcOczEQRJkmht3C5Ud3sgHMfNZjNN03K5HMdxu93urichSRLHcYfDgWGY43dB4HAnZ5hMpvHjx3t7e6ekpNjtdrlcTlGU3W53/cLU19czDAM0JhAISJKkKIogCBzHG4EG/qPngYOUSCTd6GlIUqfTrVq16ssvv5wwYYLVai0tLa2rqxMIBEKh0JULwLLsqlWrIiMjH3744d69e0skEofDYbPZDAaD0Wg0Go0Wi8VqtbIsC2znTDM9RvBu1faJIAiDwZCUlDR16lQcxzEMKyoqSkhIOHjw4N27d2UymUQiYVkWlqTr9JrdbheLxcXFxdzLoWlap9PV1NSoVKrKysrbt2/DnyqVqra2tqGhwWAwOBwOmUzWk/DRjcABq+Lh4ZGbm+vv7w+UThAEhmFVVVV79uxJTEwsKSkRCoUeHh4YhnWROYLjuNVqffjhh7Ozs8ViMUAWHqNZgmloaFCpVGq1Oi0t7ZNPPgH4Im+l81fFYrEEBAT07dvX4XCAgmdZ1m63P/TQQ++9955SqYyPj3/00Ud1Op1Op+PIvNPZi6bpfv36eXh4cHYG2BbwMAzDMAxjt9tZliUIwsvL65FHHpk4ceKgQYPMZnNLMELg6Oiq2Gy24OBgZycF7EGHw2G32728vF555ZXMzMyDBw9GRkZaLBatVgsr1LlPwjDMoEGDgBg44OI4Dg9DURRFUSRJcqChaZpl2V9//bWHmR3dCBwOh4MkyccffxwWoxGpcBAhSXLWrFlJSUmnTp2aN28eSZKdu19xHGdZNiAggI8PAqARCAQOh+PatWsutpofFHDgOE7TtJ+f32OPPdYUHE0h4nA4Jk6cuHv37szMzLCwMKPR2Fn4AIwOGzaspcdoanZgGHb79u2KigqRSITA0VWxr1GjRvXv39/hcLSy0pypYbfb7Xb7iBEjWJbtxCWx2+0ymQyYgw844NZXr17VarVAIQgcnW9w0DQ9YcKENrkhJEnm5eVduHBBJpN1io+A4zjDMH5+fgMHDmwTOAoKCmia7nTrGIHjf+QsEAgmTZrEc0m4VUlJSTGbzZ11FoPjuM1mGzhwoJeXl8Ph4PMkQHIXL16kKKqHBcG6RfgcQgsDBw4cP34897r50Ibdbj9x4oRYLG6FNsBm5E9FdrsdDA6WZe+JOdCAFoulpKREIpGAR9NFm+cBBQdBEGaz+Y9//KNCoeDpmoLbkpeXd+nSJalU2tK7AyagaZrv66AohmEAHHxoANiluLi4uLiYJEmbzdZFr0gsFoMx/iAyh8PhiIyMhC3Cf/P99NNPZrNZJpMxDNMsDdTX18+fPz8mJgbAxNPmCAwMhK/z+TyGYQMHDjxz5kwXqRXA35o1a/Ly8jrLtLpvwAGb28/P74knnuCpU8DbNBqNx48fl0qlLRmwsNKDBw+G2Ek7HoznZ3r16jV58uQufUve3t4Mw7jY4HU/OAiC0Ov1kyZNGjBgAE/aAGsgNTX1xo0bXl5erXs3VqsVYt4URfF/pDYtA0TWu85UJwjC9cjoLszBMEx0dDR/nQKvKTExkef1QVt3XXYZ3KLrLt5WsPYcV5am6V69ej311FM8dQoA6MaNG6mpqR4eHm5MFevx4mZwgOkQGho6ePBgnrQBRt/evXshIomWsMeCA3TKM888w9OVh7iC0Wj86aefXGy6I3C4wU/p27dvVFQUT9fRbrfjOH7kyJHi4uJWwhtI7ntwQFLglClT+vXrx7IsH5uLJEmWZb/77juKohAyer5BOmfOHIxfOBJoIzMzU6lUenp6InD0WHDAGf3w4cMjIiJ4+ilALTt27Oh5558IHM34KbNmzQJ39J6LDZ+5cuVKUlKSXC5HtNGTwWG32z09PV966SWM9xk9juNff/21wWCAU4xWksKRdIpQ7qINnU4XGRk5ZsyY1vO+QCAEUlZWdvDgQblcDoEvo9GI4zgQTysmC6QV3pOc2nra3qUh80a/3V2VmG7beSzLLly4kH94A8fxb775RqvVisVinU43Y8aM/fv3DxkypLa2lmXZVs5NRCIRSZLwZyvSVhKCkLkLhKvEdD0+3MAcUBA7atSo6Oho/rRRUVGRmJioUCgYhiFJctGiRVOnTp0yZcpXX3319ddfa7Vab2/vRrsZil/KysoyMjJaObKHQJxCoRg3bhxPzsBxXK1WX7582QVJo3A7rVbreny4oeKNoqja2tovvvjizTff5HNYCuv6xhtvbNu2rXfv3jqdLigoKD09HS6FYVhxcfHGjRsPHTpEUVQjLQNxttZzcCiKMplM8+fP37NnD5+0D3jmDRs2rF+/XiqVNptK0ukiFotdDw5XMweUtQ0aNGj+/Pl8Tko5awNog2VZq9UaExPDld6zLDty5Mh9+/YdO3Zsw4YN+fn5CoVCKBTCmjkcDqFQKBKJWgeHzWabPn06z3ALnPGmp6dLJBKXnfy5xexwtc1BkqRer3/55Zd9fX35REWBVL/88kuNRiMUCs1mc0BAwPPPPw/6CBQ/lFbPnDkzIyNjy5YtEolEo9FwHWAAQC0J1M7L5fLg4GA+4RZ45vLy8suXL4tEIoZhWJdIzzdIIVc0ICDgb3/7G09rgyTJK1euJCYmQjq4wWB48cUXgUI4YIFPa7fbJRLJ6tWrMzMz58+fbzQa9Xo9RVH3dFKgQHfo0KE8wYFhWEZGRs+rUnE/OAwGw9tvv+3j48OTNjAM27RpE8Q2bDZbnz59Fi1a1GzRAFcMN3To0F27dh07diw4OFitVttsNq7StanAZcePHw9553x+AoZhaWlpUFhF8JP7NJ7rOpuDoiidTjd58uQFCxbwSd0A2zArK+vw4cNeXl4YhjU0NMybN2/gwIEtmY2clsEwLCIiYvLkyXFxcf/85z9ra2tpmm4pCdlut0+cOJGPwQFsp9Vqz5w5wzCMTqfjyRxCofB+LKN1kbcC+eUMw5w9ezYoKIiPUwBrPH369PT0dAh8sSyblZU1cuRIPhUlEPUiCALcii+//DIkJKRZULIsGxQU5Onpec8qJviAwWAoKCjgSQbwS/fu3fvdd9/dM931QWQOoNba2trt27fzRAZ85uDBg+np6T4+Pg6Ho76+fs6cOYGBgXyQATd1OBwqlSoxMZEgiEcffRTK6VpHMJ8PeHh4hIeHt+kN5OTkuCVDuLuDA8rnGxoaPvjgg9jYWD6BDWDvu3fvLlu2zGazqdVq8Dj+/ve/8/foAEO7du0qKysTCoUGgwGC6M0Cq61mAX8CgN9rtVqRzdF88FEul3/22WdLlizhuek5cCxdurRPnz5isVgkEvXu3RvKrPlfQaPR/Otf/5LL5SaTifNsOyVNnP9FIJaDDNJmtqPJZBo7duyxY8f8/Pz4l7LBx4KCgoKCgtp3a0BhXFxceXl53759jUYjhqRbubIQnayoqDAaje0wxMCA5Rpw8b8CoLC6unrHjh3cES6S7ggOlUq1a9eudhQB4zhO/S5wPsn/vjiOb9u2raqqqoe12ulRQTCWZWUy2eHDh6GFhgvWCWijvLw8ISHhvnMdHzhwSCSS4uLitLQ0zCVNJoA2Nm/erNFoenx4+/4GB7dgP/74I8Y7HbDdAp5qfn7+3r17vby8XHOYjsDRIfLw8PBIS0u7e/cuBKa6+o4bN2602WwovfQ+AAeYpXfv3k1OTsa6rCc1RxtHjx49fvy4QqFA1sZ9o1YEAsHhw4exTopBtWRqmM3m9evXI1PjfgKH3W6XSqXZ2dmlpaXQH7grbkEQRFxc3MWLFz08PJreAtqWc9JWzWj/f0Hg6EwRCAQajQY0S6eDA+KhlZWVn3/+ebMKBYZdkCQpFArbFDL53zsiiEYZ4Q8IOFyUzwGWR3Jy8ooVKxq9XOcJWe0rVYJvffDBByqVqlevXo2cFMhBv3jxokgk4kL4ISEhEB/jc0ZfWVl58+ZNSMiAqwUHBz8IrUFcBA7QLAUFBaWlpQEBAbC54dV38FwK7NAzZ87s27cPuqo1G2tZu3YtIMNkMgUHB2dlZfHvJLls2bKjR4/KZDLoLaZQKK5evdqnTx+eXWwROHhpFrVaffr06cGDBztbpjRNw/ijW7duXbt2TaFQvP766zzP0GF5LBbLmjVrWucbsVgM8XiLxbJ06VJIT289eYBLfM/KyvLx8YFcQ4ZhZDLZA1LG7TpwwOH16dOnY2NjbTZbbm5uVlZWfn7+9evX79y5A9P2aJo+cuQIpO7xUe1gbXzxxRd5eXl+fn6tRL2AJ0wm08MPP/znP/+Zj98E4Dhy5IharYaLgzX94NRwuw4cLMuCZlm7du2JEyeuXLkCBy5CoVAgEMjlco1G89prr82aNYsnMuBjV65c+eyzz7y9ve/pRJAkqdVqly9f7uPjw+cWkI76yy+/tN4+G4Gj05hDp9N9/PHHIpEIKoLAxMNx3Gg0Dhgw4IMPPuDZ4oczYFetWmUyme4Z9YLSN39//9jYWD62AtBGYWHhpUuXoFEMaLr2lfY756m3b1/1cHBwrwlyQlmW5bQAFCR+8sknfn5+bVIo8fHxJ0+ebF2hcLfQarXvvvtu//79+dwCwLdr166Ghgau5hFsjnYcAthsNpZl9Xp9O457cByHlvuuB4f7p0NSFKXRaObOnbt3717+yCAI4ubNm2FhYTab7Z7JAEKhUK1Wh4WFnT59WigU8p+jcPHiRZ1O51ykCq5sSEiIUCjkyZc4jt+6dausrKytoVv4rtVqjY2NValUro/8uhkcMPTPy8vrwoUL/v7+fMrgOGtj5syZJ06c4JI2cCeBmCYgAMfx+vr6wYMHnzx5cujQoV0xMLCrZfTo0W6ZEebm9tZgbezcubNfv35tskPj4+OPHz/eu3dv8EhZlqVpGgrqWZblZs/C5yMiIrZv394OZLRUpNrWIGn7Or0Ac5hMJncdFbkTHAKBoKamJjY29rnnnmuTqVFSUvLee+9JJJK6ujporyAWi3v16jVgwIDhw4cHBgYGBQWVlpauXLmSYZiFCxfu2LEDa+OwDo7YOmsPtCPozgUJe7630nTz6XS68ePHb9mypU2NrbVa7QsvvNDQ0DBs2LCBAweOGDFi9OjRo0aNGjx4cJ8+fThjQqVSWa1WqVSal5dnNBrdZdMhV7adpoZcLt+zZw8covJ0XwmCUKlUK1asCAkJGTBggFwub6p0aJoWCAR37tyBOY8XL148efLk7Nmz2zRVA4l7wAE4MJvN33///ciRI3kqFI7kR44cOXLkSGddDvQL/5ebnqHX6zmKSkxMnD17NsoNa/Medj0ySJLUaDSffPLJM888Aw2+2qqJoaiaU8lQu8A5qPCnyWSC2bMeHh7p6emlpaUEQaDupd0XHLCWtbW177zzDs+GYC1d5J4nc2azGUr7BQKBVqs9ePAg5r5QIwLHvYNdLMsCMjZv3sxfm7RPLBYLoAeO7A8fPkzT9IOTp3M/gYNlWa1Wi2HY9u3bN2/ezB1VdCk4uFtLpdLLly/n5OSAokGr3o3AgeO4VCqdM2fOuXPnYmNjwTdxQQ2LsyVrsVh+/vlntN7dy1uBJnF79ux5+umnsd/jmy74Yc5RRchDO3XqlMlkkkqlPT6D675hDgBHZmYmhmGu1PrON3I4HGKx+MaNGxcuXHA2SyFhgEsuZ3hLO7Qq0wHpseCASNSBAwfq6upcea7Y6NQUwm5JSUncUsHJHARIIKec4i3t2CFU20UgEFAUJZfL3RWh6XK14nA4JBLJrVu3kpKS5s2bZ7fbuzRMCVEQh8PR6AwTfJZff/3VYrGIxWL4R5qmNRqNSqXSaDRarVav15vNZpqmW/J44bxXKBTGxMTIZDKenEEQhFKpPHv2bPuG0kHTLLf4Wa6IkELIcv/+/fPmzev0TeBc2QAeEHBGnz59nKPyLMuKxeKSkpKSkhKFQnHo0KH8/PySkpK7d+/q9XqLxQKQar3nGAROPDw8nnvuOZlMxj+jLCUl5cMPP6Qoqn3JPnK53DUNLNwADghTZmVllZSUDB8+vOMZFZyt0LSyoaam5tq1awUFBWfOnGk6W5QkyeXLl5eVlVVWVsJfPT09RSIRlyV6z3bH0OKsrc8vk8koirpnxhogoClA3WV2uOhsBSYl/PLLL2+99Vb7wOF8jMJ1DwbklZWVFRYW5ubmFhQUlJSU1NTUWCwWqVTaKDEYoqU5OTlCodDb27tfv34CgaC4uFin0wE+wCRqpdE4gKODBmlLsGBZtq6ujqIoGA3THcp9XQQOYPWjR4+uXLmyTQ2cYKkgNZf7osViuX79el5eXnZ29qVLl8rLy+vq6liWFQgEYrFYJpNBSnBTBe9wOKRSKTQaTEhIiIqKysjIOHv27Llz565evapWqwmCkEqlQqEQDmK6OtwOQGcYpq6uTiQSRUdHL1269NNPP71w4UKzFb89FhxSqbSwsLCoqGjcuHGtRDs4ldEIEA0NDdeuXcvJycnOzi4qKvrPf/6j1+txHBeJRCKRyNvbGwwCbsxAKw9jMpkCAwMjIyNFIlFERASMp/ztt98yMjJSU1Nzc3MrKysZhhGLxdyUk06fWwCwoGm6vr7e09PzhRdeiI2NhS7bDMPMnj27O0RiXHdkT5KkwWA4duzYuHHjmr5oLpHOWWXo9frLly9fuHBBqVQWFRVVVVWZTCaSJMVisVAo9PX15TQ0gIkzRFr3Ko1G44svviiTybiuwiRJjhgxYsSIEa+88oparc7JyUlNTc3IyLh+/Tp44ICSToSF1Wqtq6vz9fVdsmTJ0qVLH330UdhCLMtGR0eHh4dnZma6vRWiS4uaxGLxqVOn3nvvPY4PuOXkSIKm6atXr54/fz4jI+PixYsACIqiYB+DjwD7GPQ3fJGmaZ1OR5IkzPlqZWGgemXBggWNirZhYQiC8PX1jYqKioqKstvtV69ePXv2bGpqamFhIZcg0pF4IEVRZrPZaDT2799/6dKlr7zyyrBhw7i4HOCbIIi33norIyPjAWIOiDRcvny5uLh49OjRsGu5jgbV1dVZWVmpqalKpbK0tNRgMBAEIZFImgUEt//sdrvRaLRarb6+vk8//XRMTExDQ8PixYtbmldNkmRdXd3LL7/cNJ+ZA4ozh40dO3bs2LHLly/PysqKiorqYLDBbDbr9fqhQ4fOnz9/0aJF/fv3x5wa+DtbppGRkVOnTk1LS3Mvebg0E4yiqPr6+tTU1FGjRgFLq1SqM2fOHD169MKFC5DYB4AAldEIEJjTgE+LxQKZocHBwc8+++yf/vQnmKZTWVmpUChomm5aegRd2Hv16gU91FvSPlxOLygsmqZFItGRI0f0en3T/g78VQmO40OGDFm4cOFf//rXXr16cbBoCjiOPNLS0tzrs7gUHBANS09PX7FiRXZ29u7du48fP15VVQU+gpeXF1ep3HQNYGfbbDadTofjeEBAQFRU1OzZsydMmMDlbTgcDn9//yFDhhQVFcEBWyPa0Gq1K1euHDJkCJ/zP7BwhUIhdDVtiY14ckZAQIBSqYTgLPQhaukBgDyeeOKJyMjIkydPurG/mUvBAZqlqKjoL3/5S1JSktFo9PT09PHxwX5vrdSsniYIgmEYg8Fgs9n69u07Y8aM559/PiIigssu5pgZYvNjx47Nzc1tFN4Ga6Nfv35vvPEG/1NZ2MT/+Mc/NBoNlGq274dLJJKKiorr16+PGjUK+32oZev3xTBs9erVp0+fdiN5EC5mDujScejQIYFA4OvrC0Mem46Uhl4acKJbW1sLw5S+/vprpVK5b9++2bNnc+N5YKtx5gKGYePHj2+6/FAJ8eqrr/bv359nFI4ruoQJcx3ZvmAyb9u2DX4Un8+zLBseHv7UU0+Bod3zmYPTLECVTXUHZ1JYrdb6+nqBQBAYGBgdHT179mxuIjAXFmv6yrhxC9CFx/nfzWbzsGHDli1b1qb4LI7jn376qUaj8fX17cg0HeC2Y8eO/fbbb4888gj/Su7Vq1efOnXKXeThhrNgODhtuleARerr6+vq6vz8/JYsWXLs2DGlUvnhhx9CaASoAmDR7DrBPw4fPrxfv34w9885trF27VqYWs1njbkWDD/++GOz3aTa+pMJgtDpdHFxcTwRBuTx+OOPz5gxw13k4eZSDnD9IQCqVqslEsmzzz7773//Ozs7Oy4ubtq0aSKRCDDBJZ23vtFZlvX09AwMDLRYLFwlS319fURExIsvvsg/D40bTAmDfDr+S+12u1wuP3DgABjgfGxbeIZVq1a5q7Mq4UZMQBW1Wq3GMGzKlCnffPONUqk8cODA3LlzfX19OVvknphotOMxDAsODua0AGRgbNq0if9FAENpaWlHjhzpxNELQqGwurp6586d4AfxJI8JEyZERUW5hTwoF2MCfAqTyWSxWGQyWUhISHR09KxZswIDA+9pUvC0EjAMCwkJEQgELMvCafD7778fEhLCkzZA79A0vW7dOqxTm/lD6sIPP/ywfPlyhULBR8EBht58883k5OSemc/BBYYBE1KpdMyYMdOnT585c2ZISEjTOHpHbgSve9SoUT4+PjabzWQyBQUFrVmzhr8dCoX8u3fvPn/+PNihnWhsSSSS0tLS/fv3L126lH9fsgkTJkyfPj0pKcnFE2RcAQ4cx/V6vUAgGDNmzLRp06Kjox977DHuvUAjpXZTRVNhGGbAgAFjxow5f/48juNbt26VSqUQd+KDDBzHtVrtpk2bmuYKdVakJyEhISYmhmebW448UlJSXEweLso+nzdvXlpa2vnz5z/66KOwsDA4FoFXz9P15+kEgTVTVlZmt9vNZvM777wTHh7eJjuUIIhNmzaVlZVJJJKuAIdMJisoKEhJSeFZYQXkMWnSpIiICBcnk7oIHH/4wx8ee+wxeB1gVbTJzOQDC3Bnbt26tXr16vDw8F9//TUiIuKdd97hyRmcHZqTkxMfH99x97X1dxIfH8/foAHCWL58eU/zVqDD2unTp53d0c6y8uBYDi57+/btd999NywsbOvWrTqdzt/fPy4uTiAQ8KyugwVgGObtt9+Gc7sueiF2u93T0zM9PV2pVIJ5zpM8IiIiHn/8cb1e77JKBVdMahKLxdevXzcajZ04qYljC4qiqqur161bFxoaunnzZpPJ5Ovra7FY4uLioMl6m+zQb7/9Nj09vfWzro4jG04Q20oeBEG89tprrhx77qJJTbdv3/7tt9+w/69S7LgSqamp+fDDD0NDQzdu3NjQ0ODn5ycSiVQq1YYNG9rU/AOQcfPmzXXr1snlcq6al2gicIDXwb0L5JGcnHzz5k2eATFIOY6Ojg4KCoJt1kOCYCRJmkym/Px8rGMdMpxhoVKpPv7449DQ0LVr12q1Wj8/P4iq1dTULFq06N13321TUS6kbrzxxhtg8dlsNqvVCilbRqPRYDAYDAa9Xm8wGBoaGsLDw/mH4Z1Dc84CA2h2797Nf8NANG/x4sVc8LcnuLLwHnNycl599dX2USJEQSBtTKVSffvttwkJCbdu3fLw8ICTdCCJmpqaGTNmxMXFtanFA8Box44dycnJP//886BBg2iads5Vdh4HIxKJxo0b19bSAWh52DQgtn///lWrVvEMiAEg5syZs2XLFpVKBfNfegI4RCJRUVERtHJr055zhkV1dfW33367c+fOiooKT09PCLFzmaQGg2HmzJkHDhwAwuB5C6535fr16wHBzzzzDP9oG8+PGY3GRp/nAmI///xzTEwMnypR8PUUCsXcuXM3bdrEp6n3faBWWJYViUTl5eXl5eX8WdRZiVRXV2/cuBGUCOTdCAQChmGcLwWFkDU1NVySH09tYrPZlixZUldX5+HhkZiYCOkjUGndrLRjv9bV1TU9TwE18f333wNA+TAc7KvFixe7Zmqui5wiiqJ0Ot2lS5f4mB1cc2qSJO/cubN+/frQ0NB169aBbdEUFtjvdTFHjhwJDQ3ds2cP6JR7eomgUNavX5+eni6Xy4VCYWVlZXJyMiwV2YK0STOCLqiurm66/DBxFwovWn9a0G6Q1ZCWluaygIeLwAGH6bm5uXxgAaH0ysrK999/PzQ0dMOGDa3Awvm7Xl5eRqNx0aJFCxYs0Gg0UEzW0r2gXd3x48c///xzyByGkAy0luusoC10tq+qqmr22B18WjBLW4EFOErnzp179tlno6OjT5w44Rpv1kWN8cEmmDhxYmpqarM2Bxc2xTCsoqIiPj4+MTHx9u3bcrkcUjp4kjn4nxqNZuTIkfHx8ZMmTWq2yxS88YqKikmTJul0OqFQCHwGz5Cdnd0pLfThCiUlJWFhYc1WWwFhyGSyvLw8f39/5ztylSwYhimVyq1btyYnJ9tsNoVC4bLOZi5iDrBJr1+/rlKpGmlfZ7a4cePGypUrw8LCtmzZotfrwUFthS1aslR8fX3Ly8ujoqK2bdsGKqZRRTWGYWazecGCBSqVCqZGOnuYJ0+exDqjLyVcQalUQtlcS0GgO3fuQL8y+Dz3QgiCyMvLe+mllyIjIw8fPiyRSLy8vFrKxL6/wSEQCGpray9fvuz8Fri0v2vXri1btmzixIlbt241m82Qe9wmWDRSGTKZTCAQvP766zExMRA14kZSwqtftmzZuXPnGs3/gudMSUnpFM0CVHHo0CHniS3NWuv79+8HauH2yaVLlxYuXPjkk0/u379fKBS6GBYuBQenX8Hs4LJBCYK4dOnSkiVLJk2atH37dpqmfX19wVbooBMPJq2fn9/u3bsjIyPLy8vhsuA0fvTRRzt37vTz86NputFSSSSSgoKCu3fvdrDjMVi7mZmZp0+fbqVwjTunzc/PB4P36tWrS5YseeKJJ3744QeKoiDg5pbSFdeBA8w9AAf0OMjJyVmwYMGUKVMSEhJYlvX19YUSlU48f2EYpnfv3rm5uU8++WRWVhb02vruu+/WrVvXbPka8HxNTY1SqexIsB+gT9P0mjVr7hkUIUnSaDQePnz41q1bsbGx4eHhCQkJMO8M+/+emS4W101qglOJ/v37FxYWFhQUfPXVVykpKSaTSS6XQ95518X7KIoyGo0CgeDgwYMGg2Hu3LkwG7bZO1IUpVarV6xYsXXr1nY04IZdDt9avHjx7t27fXx87hmTgLxoDMOqqqq8vLzAL8PcLS4d4wUaffTo0fn5+UajUaFQ8Dyz7riQJGmxWKBdGCx5S1iEOobg4OBz587xb6bLdYIAWFRXVy9fvvzQoUMwppTPzuH63HXpPum+4ACBTrGQDObSn/o7VbSe/A3rJJFIcnNzH3rooaYOrfMwQG70KRfj0ul0+/bt+/zzzysqKvhwRiPrtZvA4n8k6vpbQkMj16tSLr7S+gKAbaTVaouLi/39/Z1PPbgBg87LCULTdGFhYXJy8oEDB4qLi2UyWVtzyboVLNwGDje2uuK5AOBY3bx5c9q0aU3D3gzDWCwWvV6vVqurqqpu3rxZUFBQWFh448YNvV4vk8m4ohvsPhf3z5Xtji8Fx202W0BAwIgRI8ACYBiGpmmapi0Wi9lsbmhoMBgMkO0BOYUwYxt0ZTfkAASOTsaH1WrlhrY46xQIUnFNscGCad9wUASO+xgfTYOkXNZP97QS7nub434Rd8Ulu4+ggYlIEDiQIHAgQeBAgsCBBIEDCQIHEgQOJAgcSBA4kCBwIEGCwIEEgQMJAgcSBA4kCBxIEDiQIHAgQeBAgsCBBIEDCRIEDiQIHEgQOJAgcCBB4ECCwIEEgQMJAgcSBA4kD478FypdkpP6142VAAAAAElFTkSuQmCC">
+<title>训练</title>
+<style>
+  :root{
+    --paper:#f3f2ed;--card:#fff;--ink:#16140f;--ink-2:#6b675d;--line:#e3e1d8;
+    --accent:#e8553b;--done:#1fae8c;--miss:#e8553b;
+    --shadow:0 1px 2px rgba(20,18,14,.05),0 8px 24px rgba(20,18,14,.06);--nav-h:66px;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0;height:100%}
+  body{font-family:-apple-system,BlinkMacSystemFont,system-ui,"PingFang SC","Microsoft Yahei",sans-serif;
+    background:var(--paper);color:var(--ink);-webkit-font-smoothing:antialiased;overscroll-behavior-y:contain}
+  #app{max-width:520px;margin:0 auto;min-height:100%;position:relative;padding-bottom:calc(var(--nav-h) + env(safe-area-inset-bottom))}
+  .screen{display:none;padding:0 18px;animation:fade .25s ease}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(6px)}to{opacity:1}}
+
+  /* 统一顶部（所有页面同高） */
+  .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
+    padding:calc(env(safe-area-inset-top) + 16px) 0 14px;min-height:96px}
+  .top h1{font-size:12.5px;font-weight:600;letter-spacing:.14em;color:var(--ink-2);margin:0 0 5px;text-transform:uppercase}
+  .top .title-lg{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .top-r{flex:none;display:flex;align-items:center;gap:8px;padding-top:4px}
+  .gear{border:0;background:#e7e5dc;width:38px;height:38px;border-radius:11px;font-size:17px;cursor:pointer;color:var(--ink)}
+
+  .toggle{display:inline-flex;background:#e7e5dc;border-radius:999px;padding:3px;position:relative}
+  .toggle button{position:relative;z-index:2;border:0;background:transparent;font:inherit;font-size:13px;font-weight:600;
+    color:var(--ink-2);padding:7px 14px;border-radius:999px;cursor:pointer;transition:color .2s}
+  .toggle button.on{color:#fff}
+  .toggle .pill{position:absolute;z-index:1;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);
+    background:var(--ink);border-radius:999px;transition:transform .26s cubic-bezier(.4,1.2,.5,1)}
+  .toggle.cal .pill{transform:translateX(100%)}
+
+  .day-caption{font-size:13px;color:var(--ink-2);font-weight:600;margin:0 2px 12px}
+
+  /* 任务卡片 */
+  .tasks{display:flex;flex-direction:column;gap:12px;padding-bottom:26px}
+  .task{background:var(--card);border-radius:18px;box-shadow:var(--shadow);overflow:hidden;display:flex;transition:transform .12s,opacity .2s}
+  .task:active{transform:scale(.985)}
+  .task.done{opacity:.5}
+  .task .thumb{width:116px;flex:none;background:#11100c;position:relative;background-size:cover;background-position:center}
+  .task .thumb .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:30px;opacity:.85}
+  .task .badge{position:absolute;left:7px;bottom:7px;font-size:10px;font-weight:700;background:rgba(0,0,0,.62);color:#fff;padding:3px 7px;border-radius:6px}
+  .task .go{position:absolute;right:7px;top:7px;font-size:11px;font-weight:700;background:rgba(0,0,0,.5);color:#fff;padding:3px 6px;border-radius:6px}
+  .task .body{flex:1;min-width:0;padding:13px 14px;display:flex;flex-direction:column;gap:7px}
+  .task .title{font-size:15px;font-weight:650;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .task .meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto}
+  .chip{font-size:11px;font-weight:700;padding:3px 9px;border-radius:999px;color:#fff;white-space:nowrap}
+  .min{font-size:12px;color:var(--ink-2);font-weight:600}
+  .task .check{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);flex:none;align-self:center;
+    margin:0 14px 0 0;display:flex;align-items:center;justify-content:center;font-size:14px;color:#fff;transition:all .15s}
+  .task.done .check{background:var(--done);border-color:var(--done)}
+  /* 紧凑（日历视图下） */
+  .tasks.compact{gap:9px}
+  .tasks.compact .task .thumb{width:78px}
+  .tasks.compact .task .body{padding:9px 12px;gap:4px}
+  .tasks.compact .task .title{font-size:13.5px;-webkit-line-clamp:1}
+  .tasks.compact .task .check{width:22px;height:22px;margin-right:11px}
+  .tasks.compact .chip{font-size:10px;padding:2px 7px}
+
+  /* 日历 */
+  .calwrap{background:var(--card);border-radius:20px;box-shadow:var(--shadow);padding:16px 14px 18px}
+  .calhead{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+  .calhead .m{font-size:17px;font-weight:750}
+  .calhead button{border:0;background:#f0efe8;width:32px;height:32px;border-radius:10px;font-size:16px;cursor:pointer;color:var(--ink)}
+  .dow{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:6px}
+  .dow span{text-align:center;font-size:11px;font-weight:700;color:var(--ink-2)}
+  .grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+  .cell{aspect-ratio:1/1.18;border-radius:11px;padding:5px 3px 4px;display:flex;flex-direction:column;align-items:center;
+    font-size:12px;cursor:pointer;position:relative;border:1.5px solid transparent}
+  .cell.out{opacity:.25}
+  .cell.today{border-color:var(--ink)}
+  .cell.sel{background:var(--ink);color:#fff}
+  .cell .dnum{font-weight:650;line-height:1.3;margin-bottom:3px}
+  .cell .bars{display:flex;flex-direction:column;gap:2.5px;width:100%;align-items:center}
+  .cell .bar{width:62%;height:3px;border-radius:2px;background:#d3d1c8}
+  .cell .bar.done{background:var(--done)}
+  .cell .bar.miss{background:var(--miss)}
+  .cell.sel .bar{opacity:.92}
+  .daydetail{margin-top:16px}
+  .daydetail h3{font-size:13px;font-weight:700;color:var(--ink-2);letter-spacing:.04em;margin:0 0 10px}
+
+  /* 通用 */
+  .empty{text-align:center;padding:50px 24px;color:var(--ink-2)}
+  .empty .ico{font-size:42px;margin-bottom:12px}
+  .empty p{font-size:14px;line-height:1.6;margin:0 0 18px}
+  .btn{border:0;border-radius:14px;font:inherit;font-weight:700;font-size:15px;padding:14px 18px;cursor:pointer;background:var(--ink);color:#fff;width:100%;transition:transform .1s}
+  .btn:active{transform:scale(.98)}
+  .btn:disabled{opacity:.5}
+  .btn.ghost{background:#e7e5dc;color:var(--ink)}
+  .btn.accent{background:var(--accent)}
+  .btn.danger{background:none;color:var(--miss);box-shadow:none;border:1.5px solid #f0c9c0}
+  .btn-row{display:flex;gap:10px}
+  .link-btn{background:none;border:0;color:var(--accent);font:inherit;font-weight:700;font-size:14px;cursor:pointer;padding:0}
+
+  /* 动作库 */
+  .cat-block{margin-bottom:20px}
+  .cat-title{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+  .cat-title .swatch{width:13px;height:13px;border-radius:4px;flex:none}
+  .cat-title .n{font-size:17px;font-weight:750}
+  .cat-title .count{font-size:12px;color:var(--ink-2);font-weight:600}
+  .cat-title .add{margin-left:auto;border:0;background:#e7e5dc;width:30px;height:30px;border-radius:9px;font-size:18px;cursor:pointer;color:var(--ink);line-height:1}
+  .ex-row{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:11px 13px;display:flex;align-items:center;gap:11px;margin-bottom:8px;transition:transform .12s}
+  .ex-row.tappable:active{transform:scale(.985)}
+  .ex-row .ei{font-size:20px;width:24px;text-align:center;flex:none}
+  .ex-row .et{flex:1;min-width:0}
+  .ex-row .et .t{font-size:14px;font-weight:600;line-height:1.3;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .ex-row .et .s{font-size:12px;color:var(--ink-2);margin-top:2px;display:flex;gap:7px;align-items:center}
+  .ex-row .edit{border:0;background:#f0efe8;color:var(--ink);font-size:15px;cursor:pointer;padding:7px 9px;border-radius:9px;flex:none}
+  .tag-type{font-size:10px;font-weight:700;padding:2px 6px;border-radius:5px}
+  .tag-type.cardio{background:#dff4f6;color:#0f8fa3}
+  .tag-type.strength{background:#fbe6e0;color:#c4452c}
+
+  /* 计划设置 */
+  .field{margin-bottom:22px}
+  .field>label{display:block;font-size:14px;font-weight:700;margin-bottom:4px}
+  .field .hint{font-size:12px;color:var(--ink-2);margin-bottom:11px;line-height:1.5}
+  .stepper{display:flex;align-items:center;background:var(--card);border-radius:14px;box-shadow:var(--shadow);width:fit-content;overflow:hidden}
+  .stepper button{border:0;background:transparent;width:46px;height:46px;font-size:22px;cursor:pointer;color:var(--ink)}
+  .stepper .val{min-width:64px;text-align:center;font-size:18px;font-weight:750}
+  .range2{display:flex;align-items:center;gap:12px}
+  .ratio{display:flex;align-items:center;gap:14px}
+  .ratio .lab{font-size:13px;font-weight:700;white-space:nowrap}
+  .ratio input[type=range]{-webkit-appearance:none;appearance:none;flex:1;height:10px;border-radius:999px;background:var(--accent);outline:none}
+  .ratio input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:26px;height:26px;border-radius:50%;background:#fff;border:1px solid rgba(0,0,0,.1);box-shadow:0 1px 5px rgba(0,0,0,.3);cursor:pointer}
+  .ratio input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:1px solid rgba(0,0,0,.1);box-shadow:0 1px 5px rgba(0,0,0,.3);cursor:pointer}
+  /* 数据-累计时长 */
+  .time-top{display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
+  .time-top .bigt{font-size:34px;font-weight:800;line-height:1;letter-spacing:-.02em}
+  .time-top .bigt-u{font-size:15px;font-weight:700;color:var(--ink-2)}
+  .time-top .hrs{font-size:14px;font-weight:700;color:var(--accent);margin-left:auto}
+  .seg-sm button{padding:7px 4px;font-size:12.5px}
+  .time-delta{font-size:13px;color:var(--ink-2);margin-top:10px}
+  .time-delta b{color:var(--ink)}
+  .daypick{display:flex;gap:6px;justify-content:space-between}
+  .daypick button{flex:1;aspect-ratio:1;border:1.5px solid var(--line);background:var(--card);border-radius:11px;font-weight:700;font-size:14px;cursor:pointer;color:var(--ink)}
+  .daypick button.rest{background:var(--ink);color:#fff;border-color:var(--ink);opacity:.4}
+  textarea{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:12px;font:inherit;font-size:14px;resize:vertical;min-height:84px;background:var(--card);color:var(--ink)}
+  textarea:focus{outline:none;border-color:var(--ink)}
+  .ai-badge{display:inline-flex;align-items:center;gap:4px;font-size:11px;font-weight:700;padding:3px 8px;border-radius:999px;margin-left:6px}
+  .ai-badge.on{background:#e7f7f1;color:#0c7a5e}
+  .ai-badge.off{background:#efeee7;color:var(--ink-2)}
+  .plan-summary{background:var(--card);border-radius:16px;box-shadow:var(--shadow);padding:6px 16px;margin-bottom:18px}
+  .plan-summary .row{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--line);font-size:14px}
+  .plan-summary .row:last-child{border-bottom:0}
+  .plan-summary .row .dn{font-weight:700}
+  .plan-summary .row .dt{color:var(--ink-2);font-size:12px;display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+
+  /* 数据库 */
+  .sec-h{font-size:13px;font-weight:700;color:var(--ink-2);letter-spacing:.06em;margin:24px 2px 12px}
+  .card-box{background:var(--card);border-radius:18px;box-shadow:var(--shadow);padding:16px}
+  .goal-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  .goal-in label{display:block;font-size:12px;color:var(--ink-2);font-weight:600;margin-bottom:5px}
+  .goal-in input{width:100%;border:1.5px solid var(--line);border-radius:11px;padding:11px;font:inherit;font-size:16px;font-weight:700;background:var(--paper);color:var(--ink);text-align:center}
+  .goal-in input:focus{outline:none;border-color:var(--ink)}
+  .bmi-row{display:flex;gap:10px;margin-top:4px}
+  .bmi-card{flex:1;background:var(--paper);border-radius:13px;padding:12px;text-align:center}
+  .bmi-card .v{font-size:24px;font-weight:800;line-height:1}
+  .bmi-card .k{font-size:11px;color:var(--ink-2);font-weight:600;margin-top:5px}
+  .bmi-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:6px;margin-top:6px;display:inline-block}
+  .logrow{display:flex;gap:9px;margin-bottom:14px}
+  .logrow input{flex:1;border:1.5px solid var(--line);border-radius:12px;padding:12px;font:inherit;font-size:15px;background:var(--paper);color:var(--ink)}
+  .logrow input:focus{outline:none;border-color:var(--ink)}
+  .logrow button{flex:none;border:0;background:var(--ink);color:#fff;border-radius:12px;padding:0 18px;font:inherit;font-weight:700;cursor:pointer}
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .stat{background:var(--paper);border-radius:13px;padding:14px}
+  .stat .v{font-size:22px;font-weight:800;line-height:1}
+  .stat .k{font-size:11.5px;color:var(--ink-2);font-weight:600;margin-top:6px}
+  .loglist{margin-top:12px}
+  .loglist .li{display:flex;justify-content:space-between;align-items:center;padding:9px 2px;border-bottom:1px solid var(--line);font-size:14px}
+  .loglist .li .d{color:var(--ink-2)}
+  .loglist .li .x{border:0;background:none;color:var(--ink-2);font-size:15px;cursor:pointer}
+
+  /* 底部导航 */
+  nav{position:fixed;left:0;right:0;bottom:0;height:calc(var(--nav-h) + env(safe-area-inset-bottom));padding-bottom:env(safe-area-inset-bottom);
+    background:rgba(243,242,237,.88);backdrop-filter:blur(14px);border-top:1px solid var(--line);display:flex;z-index:50;max-width:520px;margin:0 auto}
+  nav button{flex:1;border:0;background:none;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;font:inherit;font-size:10px;font-weight:650;color:var(--ink-2);cursor:pointer}
+  nav button .ni{font-size:20px;line-height:1}
+  nav button.on{color:var(--ink)}
+
+  /* 弹窗 */
+  .sheet-bg{position:fixed;inset:0;background:rgba(20,18,14,.42);z-index:100;display:none;align-items:flex-end;justify-content:center}
+  .sheet-bg.show{display:flex}
+  .sheet{background:var(--paper);width:100%;max-width:520px;border-radius:24px 24px 0 0;padding:22px 18px calc(28px + env(safe-area-inset-bottom));max-height:92vh;overflow:auto;animation:up .28s cubic-bezier(.3,1,.5,1)}
+  @keyframes up{from{transform:translateY(100%)}to{transform:none}}
+  .sheet h2{font-size:19px;font-weight:800;margin:0 0 16px}
+  .grab{width:38px;height:4px;background:var(--line);border-radius:99px;margin:0 auto 16px}
+  .inp{width:100%;border:1.5px solid var(--line);border-radius:13px;padding:13px;font:inherit;font-size:15px;background:var(--card);color:var(--ink);margin-bottom:13px}
+  .inp:focus{outline:none;border-color:var(--ink)}
+  .lbl{font-size:13px;font-weight:700;margin:2px 0 7px;display:block}
+  .title-row{display:flex;gap:8px;margin-bottom:13px}
+  .title-row .author{flex:none;width:96px}
+  .title-row input{margin-bottom:0}
+  .seg{display:flex;background:#e7e5dc;border-radius:13px;padding:3px;gap:3px}
+  .seg button{flex:1;border:0;background:transparent;font:inherit;font-weight:650;font-size:13px;padding:10px 4px;border-radius:10px;cursor:pointer;color:var(--ink-2)}
+  .seg button.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+  .swatches{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:16px}
+  .swatches button{width:34px;height:34px;border-radius:10px;border:3px solid transparent;cursor:pointer}
+  .swatches button.on{border-color:var(--ink)}
+  .note{font-size:12px;color:var(--ink-2);line-height:1.55;margin:2px 0 14px}
+  .recog{display:flex;align-items:center;gap:8px;margin:-4px 0 13px}
+  .recog button{border:0;background:#ece9e0;color:var(--ink);font:inherit;font-weight:700;font-size:13px;padding:9px 13px;border-radius:11px;cursor:pointer}
+  .recog .st{font-size:12px;color:var(--ink-2)}
+</style>
+</head>
+<body>
+<div id="app">
+
+  <!-- 今天 -->
+  <section id="s-today" class="screen active">
+    <div class="top">
+      <div class="top-l"><h1>今天的训练</h1><div class="title-lg" id="todayDate">—</div></div>
+      <div class="top-r">
+        <div class="toggle" id="viewToggle"><div class="pill"></div>
+          <button class="on" data-v="list">列表</button><button data-v="cal">日历</button></div>
+      </div>
+    </div>
+    <div id="listView">
+      <div class="day-caption" id="todayCap"></div>
+      <div class="tasks" id="todayTasks"></div>
+    </div>
+    <div id="calView" style="display:none">
+      <div class="calwrap">
+        <div class="calhead"><button id="prevM">‹</button><div class="m" id="calMonth">—</div><button id="nextM">›</button></div>
+        <div class="dow"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        <div class="grid" id="calGrid"></div>
+        <div class="daydetail"><h3 id="dayLabel">选中日期</h3><div class="tasks compact" id="dayTasks"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 计划 -->
+  <section id="s-plan" class="screen">
+    <div class="top">
+      <div class="top-l"><h1>训练计划</h1><div class="title-lg">安排我的一周</div></div>
+      <div class="top-r"><button class="gear" id="openSettings">⚙</button></div>
+    </div>
+    <div style="padding-bottom:30px">
+      <div class="field">
+        <label>每周训练几天</label>
+        <div class="hint">其余日子自动作为休息日。</div>
+        <div class="stepper"><button data-step="days-">−</button><span class="val" id="vDays">4</span><button data-step="days+">+</button></div>
+      </div>
+      <div class="field">
+        <label>休息日</label>
+        <div class="hint">点选要固定休息的星期。</div>
+        <div class="daypick" id="dayPick"></div>
+      </div>
+      <div class="field">
+        <label>每天时长范围（分钟）</label>
+        <div class="hint">系统会把每天的训练量控制在这个区间内。</div>
+        <div class="range2">
+          <div class="stepper"><button data-step="min-">−</button><span class="val" id="vMin">30</span><button data-step="min+">+</button></div>
+          <span style="color:var(--ink-2);font-weight:700">至</span>
+          <div class="stepper"><button data-step="max-">−</button><span class="val" id="vMax">60</span><button data-step="max+">+</button></div>
+        </div>
+      </div>
+      <div class="field">
+        <label>有氧 : 无氧 比例</label>
+        <div class="hint">拖动滑块调整，向右有氧更多。</div>
+        <div class="ratio">
+          <span class="lab">力量 <span id="vStr">50</span>%</span>
+          <input type="range" id="ratio" min="0" max="100" step="10" value="50" aria-label="有氧无氧比例">
+          <span class="lab"><span id="vCar">50</span>% 有氧</span>
+        </div>
+      </div>
+      <div class="field">
+        <label>其他偏好 <span id="aiBadge" class="ai-badge off">AI 未连接</span></label>
+        <div class="hint" id="notesHint"></div>
+        <textarea id="notes" placeholder=""></textarea>
+      </div>
+      <button class="btn accent" id="genPlan">生成本周计划</button>
+      <div id="planResult" style="margin-top:22px"></div>
+    </div>
+  </section>
+
+  <!-- 动作库 -->
+  <section id="s-lib" class="screen">
+    <div class="top">
+      <div class="top-l"><h1>动作库</h1><div class="title-lg">我的训练内容</div></div>
+      <div class="top-r"><button class="link-btn" id="addCatBtn">+ 部位</button></div>
+    </div>
+    <div id="libBody" style="padding-bottom:30px"></div>
+  </section>
+
+  <!-- 数据 -->
+  <section id="s-data" class="screen">
+    <div class="top">
+      <div class="top-l"><h1>身体数据</h1><div class="title-lg">目标与记录</div></div>
+    </div>
+    <div style="padding-bottom:30px">
+      <div class="sec-h">我的目标</div>
+      <div class="card-box">
+        <div class="goal-grid">
+          <div class="goal-in"><label>身高 (cm)</label><input id="gHeight" type="number" inputmode="decimal" placeholder="165"></div>
+          <div class="goal-in"><label>目标体重 (kg)</label><input id="gTarget" type="number" inputmode="decimal" placeholder="55"></div>
+        </div>
+        <div class="bmi-row">
+          <div class="bmi-card"><div class="v" id="curBmi">—</div><div class="k">当前 BMI</div><div id="curBmiTag"></div></div>
+          <div class="bmi-card"><div class="v" id="tgtBmi">—</div><div class="k">目标 BMI</div><div id="tgtBmiTag"></div></div>
+        </div>
+      </div>
+
+      <div class="sec-h">记录体重</div>
+      <div class="card-box">
+        <div class="logrow">
+          <input id="logDate" type="date">
+          <input id="logWeight" type="number" inputmode="decimal" placeholder="体重 kg">
+          <button id="addWeight">记录</button>
+        </div>
+        <div id="weightChart"></div>
+        <div class="loglist" id="logList"></div>
+      </div>
+
+      <div class="sec-h">累计运动时长</div>
+      <div class="card-box">
+        <div class="time-top"><span class="bigt" id="totMin">0</span><span class="bigt-u">分钟</span><span class="hrs" id="totHr">≈ 0 小时</span></div>
+        <div class="seg seg-sm" id="rangeSeg" style="margin:14px 0 8px"><button class="on" data-rg="week">按周</button><button data-rg="month">按月</button></div>
+        <div id="timeChart"></div>
+        <div class="time-delta" id="timeDelta"></div>
+        <div class="stat-grid" style="margin-top:16px">
+          <div class="stat"><div class="v" id="stStreak">—</div><div class="k">连续达标天数</div></div>
+          <div class="stat"><div class="v" id="stWeek">—</div><div class="k">本周完成率</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav>
+    <button class="on" data-go="today"><span class="ni">◫</span>今天</button>
+    <button data-go="plan"><span class="ni">◷</span>计划</button>
+    <button data-go="lib"><span class="ni">▤</span>动作库</button>
+    <button data-go="data"><span class="ni">◳</span>数据</button>
+  </nav>
+</div>
+
+<!-- 部位弹窗 -->
+<div class="sheet-bg" id="catSheet"><div class="sheet"><div class="grab"></div>
+  <h2>新增训练部位</h2>
+  <label class="lbl">名称</label><input class="inp" id="catName" placeholder="例如 臀腿、肩背、有氧">
+  <label class="lbl">颜色</label><div class="swatches" id="catSwatches"></div>
+  <label class="lbl">类型</label>
+  <div class="seg" id="catType" style="margin-bottom:20px"><button class="on" data-ct="strength">力量</button><button data-ct="cardio">有氧</button></div>
+  <div class="btn-row"><button class="btn ghost" data-close>取消</button><button class="btn" id="saveCat">添加</button></div>
+</div></div>
+
+<!-- 动作弹窗（新增/编辑共用） -->
+<div class="sheet-bg" id="exSheet"><div class="sheet"><div class="grab"></div>
+  <h2 id="exSheetTitle">添加动作</h2>
+  <div class="seg" id="exKind" style="margin-bottom:16px"><button class="on" data-ek="video">视频链接</button><button data-ek="card">运动卡片</button></div>
+  <div id="videoFields">
+    <label class="lbl">视频链接</label>
+    <input class="inp" id="exUrl" placeholder="粘贴 YouTube / B站 / 小红书 链接" style="margin-bottom:8px">
+    <div class="recog"><button id="recogBtn">✨ 自动识别</button><span class="st" id="recogSt"></span></div>
+    <label class="lbl">博主 + 标题</label>
+    <div class="title-row">
+      <input class="inp author" id="exAuthor" placeholder="博主">
+      <input class="inp" id="exTitle" placeholder="如 20min瘦大腿">
+    </div>
+    <div class="note" id="exPreview"></div>
+  </div>
+  <div id="cardFields" style="display:none">
+    <label class="lbl">名称</label><input class="inp" id="exCardName" placeholder="例如 游泳、跑步、跳绳">
+  </div>
+  <div class="range2" style="margin-bottom:18px">
+    <div><label class="lbl">时长（分钟）</label>
+      <div class="stepper"><button data-exmin="-">−</button><span class="val" id="exMinVal">20</span><button data-exmin="+">+</button></div></div>
+    <div style="flex:1"><label class="lbl">类型</label>
+      <div class="seg" id="exType"><button class="on" data-et="strength">力量</button><button data-et="cardio">有氧</button></div></div>
+  </div>
+  <div class="btn-row"><button class="btn ghost" data-close>取消</button><button class="btn" id="saveEx">保存</button></div>
+  <button class="btn danger" id="delEx" style="margin-top:12px;display:none">删除这个动作</button>
+</div></div>
+
+<!-- 设置弹窗 -->
+<div class="sheet-bg" id="setSheet"><div class="sheet"><div class="grab"></div>
+  <h2>设置 · AI 连接</h2>
+  <div class="note">填入你自己的 Claude API key 后，「生成计划」会用 AI 理解你的偏好来排课。<b>这个 key 只保存在你这台手机本地，不会上传、不会进 GitHub。</b> 若 key 曾在别处明文出现过，建议去后台重置后再填新的。</div>
+  <label class="lbl">Claude API Key</label>
+  <input class="inp" id="apiKeyInp" type="password" placeholder="sk-ant-...">
+  <div class="recog" style="margin-top:-4px"><button id="testApi">测试连接</button><span class="st" id="apiSt"></span></div>
+  <div class="btn-row" style="margin-top:8px"><button class="btn ghost" data-close>关闭</button><button class="btn" id="saveApi">保存</button></div>
+</div></div>
+
+<script>
+"use strict";
+const KEY="trainingApp.v2";
+const PALETTE=["#e8553b","#2f6bff","#f2a03d","#8a5be0","#1fae8c","#e0457b","#16b3c9","#6b7280"];
+const MODEL="claude-haiku-4-5-20251001";
+let mem=null;
+function load(){try{const r=localStorage.getItem(KEY);if(r)return JSON.parse(r);}catch(e){}return mem;}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){mem=state;}}
+let state=load()||{categories:[],exercises:[],
+  prefs:{daysPerWeek:4,dailyMin:30,dailyMax:60,cardioPct:50,restDays:[],notes:""},
+  plan:null,done:{},profile:{height:null,target:null},weightLog:[],apiKey:""};
+if(!state.profile)state.profile={height:null,target:null};
+if(!state.weightLog)state.weightLog=[];
+if(state.apiKey===undefined)state.apiKey="";
+
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const uid=()=>Math.random().toString(36).slice(2,9);
+const WD=["周一","周二","周三","周四","周五","周六","周日"],WD1=["一","二","三","四","五","六","日"];
+function todayIdx(){return(new Date().getDay()+6)%7;}
+function ymd(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+function catById(id){return state.categories.find(c=>c.id===id);}
+function exById(id){return state.exercises.find(e=>e.id===id);}
+function esc(s){return(s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]));}
+function exTitle(e){return e.author?("["+e.author+"]"+e.title):e.title;}
+function detectPlatform(u){u=(u||"").toLowerCase();
+  if(u.includes("youtube.com")||u.includes("youtu.be"))return"youtube";
+  if(u.includes("bilibili.com")||u.includes("b23.tv"))return"bilibili";
+  if(u.includes("xiaohongshu")||u.includes("xhslink"))return"xiaohongshu";return"link";}
+function ytId(url){try{const u=new URL(url);if(u.hostname.includes("youtu.be"))return u.pathname.slice(1);
+  if(u.searchParams.get("v"))return u.searchParams.get("v");const m=u.pathname.match(/\/(embed|shorts)\/([^/?]+)/);if(m)return m[2];}catch(e){}return null;}
+const PLAT={youtube:{n:"YouTube",i:"▶"},bilibili:{n:"哔哩哔哩",i:"📺"},xiaohongshu:{n:"小红书",i:"📕"},link:{n:"链接",i:"🔗"},card:{n:"运动卡片",i:"💪"}};
+function cardIcon(t){t=t||"";if(/游泳/.test(t))return"🏊";if(/跑|run/i.test(t))return"🏃";if(/单车|骑|bike|cycl/i.test(t))return"🚴";if(/跳绳/.test(t))return"🤸";if(/瑜伽|yoga/i.test(t))return"🧘";if(/走|walk/i.test(t))return"🚶";return"💪";}
+function shade(h){return h+"cc";}
+
+/* 导航 */
+function go(name){$$(".screen").forEach(s=>s.classList.remove("active"));$("#s-"+name).classList.add("active");
+  $$("nav button").forEach(b=>b.classList.toggle("on",b.dataset.go===name));window.scrollTo(0,0);
+  if(name==="today")renderToday();if(name==="lib")renderLib();if(name==="plan")renderPlanScreen();if(name==="data")renderData();}
+$$("nav button").forEach(b=>b.onclick=()=>go(b.dataset.go));
+
+/* ===== 今天 ===== */
+let calCursor=new Date(),calSel=ymd(new Date());
+function renderToday(){
+  const now=new Date();
+  $("#todayDate").textContent=(now.getMonth()+1)+"月"+now.getDate()+"日 · "+WD[todayIdx()];
+  const ids=planForWeekday(todayIdx());
+  const mins=ids.reduce((s,id)=>s+((exById(id)||{}).minutes||0),0);
+  $("#todayCap").textContent=ids.length?(ids.length+" 项训练 · 共 "+mins+" 分钟"):(state.plan?"今天是休息日":"还没有计划");
+  renderTaskList($("#todayTasks"),ids,ymd(now),{});
+}
+function renderTaskList(box,ids,dateStr,opts){
+  opts=opts||{};box.innerHTML="";
+  if(!ids.length){
+    if(!box.classList.contains("compact")){
+      if(!state.exercises.length){box.innerHTML=`<div class="empty"><div class="ico">🏋️</div><p>先去「动作库」添加部位和动作，<br>再到「计划」生成每周安排。</p><button class="btn accent" onclick="seedDemo()">载入一份示例看看</button></div>`;}
+      else if(!state.plan){box.innerHTML=`<div class="empty"><div class="ico">🗓️</div><p>动作已就绪，去「计划」生成本周安排吧。</p><button class="btn accent" onclick="go('plan')">去生成计划</button></div>`;}
+      else{box.innerHTML=`<div class="empty"><div class="ico">🌿</div><p>这天是休息日，好好恢复。</p></div>`;}
+    }else{box.innerHTML=`<div style="color:var(--ink-2);font-size:13px;padding:6px 2px">这天休息</div>`;}
+    return;
+  }
+  const done=state.done[dateStr]||[];
+  ids.forEach(id=>{const e=exById(id);if(!e)return;const cat=catById(e.catId)||{color:"#888",name:""};const isDone=done.includes(id);
+    const el=document.createElement("div");el.className="task"+(isDone?" done":"");
+    let thumb;
+    if(e.kind==="video"){const yt=e.platform==="youtube"?ytId(e.url):null;
+      const bg=yt?`style="background-image:url('https://img.youtube.com/vi/${yt}/hqdefault.jpg')"`:"";
+      thumb=`<div class="thumb" ${bg}>${yt?"":`<div class="ph">${PLAT[e.platform].i}</div>`}<span class="badge">${PLAT[e.platform].n}</span><span class="go">打开 ↗</span></div>`;
+    }else{thumb=`<div class="thumb" style="background:linear-gradient(135deg,${cat.color},${shade(cat.color)})"><div class="ph">${cardIcon(e.title)}</div></div>`;}
+    el.innerHTML=thumb+`<div class="body"><div class="title">${esc(exTitle(e))}</div>
+      <div class="meta"><span class="chip" style="background:${cat.color}">${esc(cat.name)}</span><span class="min">${e.minutes} 分钟</span>
+      <span class="tag-type ${e.type}">${e.type==="cardio"?"有氧":"力量"}</span></div></div>
+      <button class="check" aria-label="完成">✓</button>`;
+    el.querySelector(".check").onclick=ev=>{ev.stopPropagation();toggleDone(dateStr,id);};
+    el.onclick=()=>{if(e.kind==="video"&&e.url)window.open(e.url,"_blank");};
+    box.appendChild(el);});
+}
+function toggleDone(dateStr,id){const arr=state.done[dateStr]||(state.done[dateStr]=[]);const i=arr.indexOf(id);
+  if(i>=0)arr.splice(i,1);else arr.push(id);save();
+  if($("#s-today").classList.contains("active")){if($("#calView").style.display!=="none")renderCalendar();else renderToday();}}
+
+const toggle=$("#viewToggle");
+toggle.querySelectorAll("button").forEach(b=>b.onclick=()=>{const v=b.dataset.v;
+  toggle.querySelectorAll("button").forEach(x=>x.classList.toggle("on",x===b));toggle.classList.toggle("cal",v==="cal");
+  $("#listView").style.display=v==="list"?"":"none";$("#calView").style.display=v==="cal"?"":"none";if(v==="cal")renderCalendar();});
+$("#prevM").onclick=()=>{calCursor.setMonth(calCursor.getMonth()-1);renderCalendar();};
+$("#nextM").onclick=()=>{calCursor.setMonth(calCursor.getMonth()+1);renderCalendar();};
+function renderCalendar(){const y=calCursor.getFullYear(),m=calCursor.getMonth();
+  $("#calMonth").textContent=y+"年"+(m+1)+"月";const first=new Date(y,m,1);const lead=(first.getDay()+6)%7;
+  const days=new Date(y,m+1,0).getDate();const grid=$("#calGrid");grid.innerHTML="";const todayStr=ymd(new Date());
+  for(let i=0;i<lead;i++){const c=document.createElement("div");c.className="cell out";grid.appendChild(c);}
+  for(let d=1;d<=days;d++){const date=new Date(y,m,d);const ds=ymd(date);const wd=(date.getDay()+6)%7;const ids=planForWeekday(wd);
+    const done=state.done[ds]||[];const past=ds<todayStr;
+    const c=document.createElement("div");c.className="cell"+(ds===todayStr?" today":"")+(ds===calSel?" sel":"");
+    let bars="";ids.slice(0,4).forEach(id=>{const isD=done.includes(id);const cls=isD?"done":(past?"miss":"");bars+=`<span class="bar ${cls}"></span>`;});
+    c.innerHTML=`<span class="dnum">${d}</span><div class="bars">${bars}</div>`;
+    c.onclick=()=>{calSel=ds;renderCalendar();showDay(ds,wd);};grid.appendChild(c);}
+  showDay(calSel,(new Date(calSel).getDay()+6)%7);
+}
+function showDay(ds,wd){const dt=new Date(ds);$("#dayLabel").textContent=(dt.getMonth()+1)+"月"+dt.getDate()+"日 · "+WD[wd];
+  renderTaskList($("#dayTasks"),planForWeekday(wd),ds,{compact:true});}
+function planForWeekday(wd){if(!state.plan||!state.plan.days)return[];return state.plan.days[wd]||[];}
+
+/* ===== 计划 ===== */
+function aiOn(){return!!state.apiKey;}
+function renderPlanScreen(){const p=state.prefs;
+  $("#vDays").textContent=p.daysPerWeek;$("#vMin").textContent=p.dailyMin;$("#vMax").textContent=p.dailyMax;
+  $("#ratio").value=p.cardioPct;$("#vCar").textContent=p.cardioPct;$("#vStr").textContent=100-p.cardioPct;
+  $("#notes").value=p.notes||"";
+  const on=aiOn();
+  $("#aiBadge").className="ai-badge "+(on?"on":"off");$("#aiBadge").textContent=on?"AI 已连接":"AI 未连接";
+  $("#notesHint").innerHTML=on?"用大白话写就行，AI 会读懂你的意思来排课。比如「有氧无氧大概 7:3」「跑步固定排早上」「周末多练腿」。":"用大白话写下偏好（在右上角 ⚙ 接入 AI key 后，这里会真正按你的话来排课）。比如「周末多练腿」。";
+  $("#notes").placeholder=on?"例如：有氧无氧大概 7:3，每天有氧固定 1 小时，周末多安排腿…":"例如：周末多安排有氧…";
+  const dp=$("#dayPick");dp.innerHTML="";
+  WD1.forEach((w,i)=>{const b=document.createElement("button");b.textContent=w;b.className=p.restDays.includes(i)?"rest":"";
+    b.onclick=()=>{const r=p.restDays;const k=r.indexOf(i);if(k>=0)r.splice(k,1);else r.push(i);save();renderPlanScreen();};dp.appendChild(b);});
+  if(state.plan)renderPlanResult();else $("#planResult").innerHTML="";
+}
+$$("[data-step]").forEach(b=>b.onclick=()=>{const p=state.prefs,k=b.dataset.step;
+  if(k==="days+")p.daysPerWeek=Math.min(7,p.daysPerWeek+1);if(k==="days-")p.daysPerWeek=Math.max(1,p.daysPerWeek-1);
+  if(k==="min+")p.dailyMin=Math.min(p.dailyMax,p.dailyMin+5);if(k==="min-")p.dailyMin=Math.max(10,p.dailyMin-5);
+  if(k==="max+")p.dailyMax=Math.min(180,p.dailyMax+5);if(k==="max-")p.dailyMax=Math.max(p.dailyMin,p.dailyMax-5);
+  save();renderPlanScreen();});
+$("#ratio").oninput=e=>{const v=+e.target.value;state.prefs.cardioPct=v;$("#vCar").textContent=v;$("#vStr").textContent=100-v;save();};
+$("#notes").oninput=e=>{state.prefs.notes=e.target.value;save();};
+
+$("#genPlan").onclick=async()=>{
+  if(!state.exercises.length){alert("动作库还是空的，先去添加动作。");return;}
+  const btn=$("#genPlan");
+  if(aiOn()&&(state.prefs.notes||"").trim()){
+    btn.disabled=true;btn.textContent="AI 排课中…";
+    try{const days=await aiPlan();state.plan={days,createdAt:Date.now(),by:"ai"};}
+    catch(err){console.warn(err);state.plan={days:generateDays(),createdAt:Date.now(),by:"local"};
+      setTimeout(()=>alert("AI 没排成功（"+(err.message||"网络/key 问题")+"），已用内置算法排好。可在 ⚙ 里检查 key。"),50);}
+    btn.disabled=false;btn.textContent="生成本周计划";
+  }else{state.plan={days:generateDays(),createdAt:Date.now(),by:"local"};}
+  save();renderPlanResult();$("#planResult").scrollIntoView({behavior:"smooth",block:"nearest"});
+};
+function generateDays(){const p=state.prefs;const work=[0,1,2,3,4,5,6].filter(d=>!p.restDays.includes(d));
+  const n=Math.min(p.daysPerWeek,work.length);const chosen=pickEvenly(work,n);
+  const target=Math.round((p.dailyMin+p.dailyMax)/2);const cardioBudget=Math.round(target*p.cardioPct/100);const strengthBudget=target-cardioBudget;
+  const cardio=state.exercises.filter(e=>e.type==="cardio");const strength=state.exercises.filter(e=>e.type==="strength");
+  const byCat={};strength.forEach(e=>(byCat[e.catId]||(byCat[e.catId]=[])).push(e));const catIds=Object.keys(byCat);
+  const inter=[];let added=true,r=0;while(added){added=false;catIds.forEach(c=>{if(byCat[c][r]){inter.push(byCat[c][r]);added=true;}});r++;}
+  const days={};let ci=0,si=0;
+  chosen.forEach(wd=>{const list=[];let cm=0,sm=0,g=0;
+    while(cardio.length&&cm<cardioBudget&&g<50){const e=cardio[ci%cardio.length];ci++;g++;if(cm+e.minutes<=p.dailyMax){list.push(e.id);cm+=e.minutes;}else break;}
+    g=0;while(inter.length&&sm<strengthBudget&&g<50){const e=inter[si%inter.length];si++;g++;if(cm+sm+e.minutes<=p.dailyMax){list.push(e.id);sm+=e.minutes;}else break;}
+    if(!cardio.length){g=0;while(inter.length&&sm<target&&g<50){const e=inter[si%inter.length];si++;g++;if(sm+e.minutes<=p.dailyMax){list.push(e.id);sm+=e.minutes;}else break;}}
+    if(!inter.length){g=0;while(cardio.length&&cm<target&&g<50){const e=cardio[ci%cardio.length];ci++;g++;if(cm+e.minutes<=p.dailyMax){list.push(e.id);cm+=e.minutes;}else break;}}
+    days[wd]=list;});
+  return days;}
+function pickEvenly(arr,n){if(n>=arr.length)return arr.slice();const out=[];for(let i=0;i<n;i++)out.push(arr[Math.round(i*(arr.length-1)/(n-1))]);return[...new Set(out)];}
+
+async function aiPlan(){const p=state.prefs;
+  const exs=state.exercises.map(e=>({id:e.id,部位:(catById(e.catId)||{}).name||"",名称:exTitle(e),类型:e.type,时长:e.minutes}));
+  const sys="你是健身排课助手。根据用户的动作库和偏好，安排一周（周一=0 … 周日=6）的训练。只输出 JSON，禁止任何多余文字、解释或 markdown。格式严格为 {\"days\":{\"0\":[\"id\",...],...}}，仅包含训练日，休息日不要出现。每个 id 必须来自动作库。每天动作总时长不得超过 dailyMax，尽量落在 [dailyMin,dailyMax] 区间；尽量满足有氧:无氧 比例和用户偏好；各部位均衡，避免同部位连日重复。";
+  const user="动作库："+JSON.stringify(exs)+"\n约束："+JSON.stringify({daysPerWeek:p.daysPerWeek,restDays:p.restDays,dailyMin:p.dailyMin,dailyMax:p.dailyMax,有氧百分比:p.cardioPct})+"\n用户偏好（自然语言，请理解并执行）："+(p.notes||"无");
+  const txt=await callClaude(sys,user,900);
+  let js=txt.trim().replace(/^```(json)?/i,"").replace(/```$/,"").trim();
+  const obj=JSON.parse(js);const raw=obj.days||{};const valid={};const ids=new Set(state.exercises.map(e=>e.id));
+  for(let wd=0;wd<7;wd++){const arr=(raw[wd]||raw[String(wd)]||[]).filter(id=>ids.has(id));
+    let tot=0;const keep=[];arr.forEach(id=>{const m=(exById(id)||{}).minutes||0;if(tot+m<=p.dailyMax){keep.push(id);tot+=m;}});
+    if(keep.length&&!p.restDays.includes(wd))valid[wd]=keep;}
+  if(!Object.keys(valid).length)throw new Error("AI 返回为空");
+  return valid;
+}
+function renderPlanResult(){const box=$("#planResult");const days=state.plan.days;const by=state.plan.by;let rows="";
+  for(let wd=0;wd<7;wd++){const ids=days[wd]||[];const cats=[...new Set(ids.map(id=>{const e=exById(id);return e?e.catId:null;}).filter(Boolean))];
+    const mins=ids.reduce((s,id)=>s+((exById(id)||{}).minutes||0),0);
+    const tags=cats.map(c=>`<span class="chip" style="background:${(catById(c)||{}).color};font-size:10px;padding:2px 7px">${esc((catById(c)||{}).name)}</span>`).join("");
+    rows+=`<div class="row"><span class="dn">${WD[wd]}</span><span class="dt">${ids.length?tags+`<span>${mins}分</span>`:'<span style="color:var(--ink-2)">休息</span>'}</span></div>`;}
+  box.innerHTML=`<div style="font-size:12px;color:var(--ink-2);margin:0 2px 8px">${by==="ai"?"✨ 由 AI 根据你的偏好排课":"由内置算法排课"}</div>
+    <div class="plan-summary">${rows}</div><button class="btn ghost" onclick="go('today')">看看今天练什么 →</button>`;
+}
+
+/* ===== 动作库 ===== */
+function renderLib(){const box=$("#libBody");box.innerHTML="";
+  if(!state.categories.length){box.innerHTML=`<div class="empty"><div class="ico">📦</div><p>还没有训练部位。<br>添加你想练的部位（臀腿、肩背、有氧…），再往里加动作。</p>
+    <div class="btn-row" style="max-width:300px;margin:0 auto"><button class="btn accent" onclick="openCat()">添加部位</button><button class="btn ghost" onclick="seedDemo()">载入示例</button></div></div>`;return;}
+  state.categories.forEach(cat=>{const exs=state.exercises.filter(e=>e.catId===cat.id);const blk=document.createElement("div");blk.className="cat-block";
+    blk.innerHTML=`<div class="cat-title"><span class="swatch" style="background:${cat.color}"></span><span class="n">${esc(cat.name)}</span><span class="count">${exs.length} 个</span><button class="add">+</button></div>`;
+    blk.querySelector(".add").onclick=()=>openEx(cat.id);
+    exs.forEach(e=>{const row=document.createElement("div");row.className="ex-row"+(e.kind==="video"&&e.url?" tappable":"");
+      const icon=e.kind==="video"?PLAT[e.platform].i:cardIcon(e.title);
+      row.innerHTML=`<span class="ei">${icon}</span><div class="et"><div class="t">${esc(exTitle(e))}</div>
+        <div class="s">${e.kind==="video"?PLAT[e.platform].n:"运动卡片"} · ${e.minutes}分<span class="tag-type ${e.type}">${e.type==="cardio"?"有氧":"力量"}</span></div></div>
+        <button class="edit" aria-label="编辑">✎</button>`;
+      row.querySelector(".edit").onclick=ev=>{ev.stopPropagation();openEx(e.catId,e.id);};
+      if(e.kind==="video"&&e.url)row.onclick=()=>window.open(e.url,"_blank");
+      blk.appendChild(row);});
+    if(!exs.length){const h=document.createElement("div");h.style.cssText="color:var(--ink-2);font-size:13px;padding:2px 2px 4px";h.textContent="点右上 + 添加动作";blk.appendChild(h);}
+    box.appendChild(blk);});
+}
+
+/* 部位弹窗 */
+let catColor=PALETTE[0],catType="strength";
+function buildSwatches(){const w=$("#catSwatches");w.innerHTML="";PALETTE.forEach(c=>{const b=document.createElement("button");b.style.background=c;b.className=c===catColor?"on":"";b.onclick=()=>{catColor=c;buildSwatches();};w.appendChild(b);});}
+function openCat(){catColor=PALETTE[state.categories.length%PALETTE.length];catType="strength";buildSwatches();$("#catName").value="";
+  $$("#catType button").forEach(b=>b.classList.toggle("on",b.dataset.ct==="strength"));$("#catSheet").classList.add("show");}
+$("#addCatBtn").onclick=openCat;
+$$("#catType button").forEach(b=>b.onclick=()=>{catType=b.dataset.ct;$$("#catType button").forEach(x=>x.classList.toggle("on",x===b));});
+$("#saveCat").onclick=()=>{const name=$("#catName").value.trim();if(!name){$("#catName").focus();return;}
+  state.categories.push({id:uid(),name,color:catColor,type:catType});save();closeSheets();renderLib();};
+
+/* 动作弹窗 */
+let exCatId=null,exEditId=null,exKind="video",exType="strength",exMin=20;
+function setKind(k){exKind=k;$$("#exKind button").forEach(b=>b.classList.toggle("on",b.dataset.ek===k));
+  $("#videoFields").style.display=k==="video"?"":"none";$("#cardFields").style.display=k==="card"?"":"none";
+  if(k==="card"){setExType("cardio");}}
+function setExType(t){exType=t;$$("#exType button").forEach(b=>b.classList.toggle("on",b.dataset.et===t));}
+function updPreview(){const a=$("#exAuthor").value.trim(),t=$("#exTitle").value.trim();
+  $("#exPreview").textContent=(a||t)?("保存后显示："+(a?"["+a+"]":"")+t):"";}
+function openEx(catId,editId){exCatId=catId;exEditId=editId||null;$("#recogSt").textContent="";
+  if(editId){const e=exById(editId);$("#exSheetTitle").textContent="编辑动作";exMin=e.minutes;
+    setKind(e.kind);setExType(e.type);
+    $("#exUrl").value=e.url||"";$("#exAuthor").value=e.author||"";$("#exTitle").value=e.kind==="video"?e.title:"";
+    $("#exCardName").value=e.kind==="card"?e.title:"";$("#delEx").style.display="";
+  }else{const cat=catById(catId);$("#exSheetTitle").textContent="为「"+(cat?cat.name:"")+"」添加动作";exMin=20;
+    setKind("video");setExType(cat&&cat.type==="cardio"?"cardio":"strength");
+    $("#exUrl").value="";$("#exAuthor").value="";$("#exTitle").value="";$("#exCardName").value="";$("#delEx").style.display="none";}
+  $("#exMinVal").textContent=exMin;updPreview();$("#exSheet").classList.add("show");}
+$$("#exKind button").forEach(b=>b.onclick=()=>setKind(b.dataset.ek));
+$$("#exType button").forEach(b=>b.onclick=()=>setExType(b.dataset.et));
+$$("[data-exmin]").forEach(b=>b.onclick=()=>{exMin=b.dataset.exmin==="+"?Math.min(120,exMin+5):Math.max(5,exMin-5);$("#exMinVal").textContent=exMin;});
+$("#exAuthor").oninput=updPreview;$("#exTitle").oninput=updPreview;
+$("#recogBtn").onclick=async()=>{const url=$("#exUrl").value.trim();if(!url){$("#recogSt").textContent="先粘贴链接";return;}
+  const plat=detectPlatform(url);$("#recogSt").textContent="识别中…";
+  if(plat==="youtube"){try{const r=await fetch("https://www.youtube.com/oembed?format=json&url="+encodeURIComponent(url));
+    if(!r.ok)throw 0;const d=await r.json();$("#exTitle").value=d.title||"";if(!$("#exAuthor").value.trim())$("#exAuthor").value=d.author_name||"";
+    updPreview();$("#recogSt").textContent="✓ 已自动填好";}catch(e){$("#recogSt").textContent="没取到，手动填吧";}
+  }else{$("#recogSt").textContent=PLAT[plat].n+"无法自动识别标题，请手填";}};
+$("#saveEx").onclick=()=>{const base=exEditId?exById(exEditId):{id:uid(),catId:exCatId};
+  base.kind=exKind;base.type=exType;base.minutes=exMin;
+  if(exKind==="video"){const url=$("#exUrl").value.trim();if(!url){$("#exUrl").focus();return;}
+    base.url=url;base.platform=detectPlatform(url);base.author=$("#exAuthor").value.trim();
+    base.title=$("#exTitle").value.trim()||PLAT[base.platform].n+"视频";
+  }else{const name=$("#exCardName").value.trim();if(!name){$("#exCardName").focus();return;}
+    base.title=name;base.author="";base.platform="card";base.url="";}
+  if(!exEditId)state.exercises.push(base);save();closeSheets();renderLib();};
+$("#delEx").onclick=()=>{if(!exEditId)return;const e=exById(exEditId);
+  if(confirm("确定删除「"+exTitle(e)+"」吗？此操作无法撤销。")){state.exercises=state.exercises.filter(x=>x.id!==exEditId);save();closeSheets();renderLib();}};
+
+/* ===== 设置 / API ===== */
+$("#openSettings").onclick=()=>{$("#apiKeyInp").value=state.apiKey||"";$("#apiSt").textContent="";$("#setSheet").classList.add("show");};
+$("#saveApi").onclick=()=>{state.apiKey=$("#apiKeyInp").value.trim();save();closeSheets();renderPlanScreen();};
+$("#testApi").onclick=async()=>{const k=$("#apiKeyInp").value.trim();if(!k){$("#apiSt").textContent="先填 key";return;}
+  $("#apiSt").textContent="测试中…";const old=state.apiKey;state.apiKey=k;
+  try{await callClaude("只回复 OK","说 OK",16);$("#apiSt").textContent="✓ 连接成功";}catch(e){$("#apiSt").textContent="✗ "+(e.message||"失败");}state.apiKey=old;};
+async function callClaude(system,user,maxTokens){const key=state.apiKey;if(!key)throw new Error("未设置 key");
+  const res=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",
+    headers:{"x-api-key":key,"anthropic-version":"2023-06-01","content-type":"application/json","anthropic-dangerous-direct-browser-access":"true"},
+    body:JSON.stringify({model:MODEL,max_tokens:maxTokens||512,system,messages:[{role:"user",content:user}]})});
+  if(!res.ok){let m="HTTP "+res.status;try{const j=await res.json();if(j.error&&j.error.message)m=j.error.message;}catch(e){}throw new Error(m);}
+  const data=await res.json();return(data.content||[]).filter(b=>b.type==="text").map(b=>b.text).join("");}
+
+/* ===== 数据 ===== */
+function bmiTag(b){if(!b)return"";if(b<18.5)return['偏瘦','#16b3c9'];if(b<24)return['正常','#1fae8c'];if(b<28)return['偏重','#f2a03d'];return['偏高','#e8553b'];}
+function renderData(){const pf=state.profile;
+  $("#gHeight").value=pf.height||"";$("#gTarget").value=pf.target||"";
+  if(!$("#logDate").value)$("#logDate").value=ymd(new Date());
+  const log=[...state.weightLog].sort((a,b)=>a.date<b.date?-1:1);
+  const cur=log.length?log[log.length-1].weight:null;
+  const h=pf.height?pf.height/100:null;
+  const cb=(cur&&h)?cur/(h*h):null;const tb=(pf.target&&h)?pf.target/(h*h):null;
+  $("#curBmi").textContent=cb?cb.toFixed(1):"—";$("#tgtBmi").textContent=tb?tb.toFixed(1):"—";
+  const ct=bmiTag(cb),tt=bmiTag(tb);
+  $("#curBmiTag").innerHTML=ct?`<span class="bmi-tag" style="background:${ct[1]}22;color:${ct[1]}">${ct[0]}</span>`:"";
+  $("#tgtBmiTag").innerHTML=tt?`<span class="bmi-tag" style="background:${tt[1]}22;color:${tt[1]}">${tt[0]}</span>`:"";
+  drawWeightChart(log,pf.target);
+  const ll=$("#logList");ll.innerHTML=log.slice().reverse().slice(0,8).map(e=>`<div class="li"><span>${e.weight} kg</span><span class="d">${e.date}</span><button class="x" data-d="${e.date}">✕</button></div>`).join("")||`<div style="color:var(--ink-2);font-size:13px;padding:8px 2px">还没有记录</div>`;
+  ll.querySelectorAll(".x").forEach(b=>b.onclick=()=>{state.weightLog=state.weightLog.filter(x=>x.date!==b.dataset.d);save();renderData();});
+  renderStats();
+}
+$("#gHeight").oninput=e=>{state.profile.height=parseFloat(e.target.value)||null;save();renderData();};
+$("#gTarget").oninput=e=>{state.profile.target=parseFloat(e.target.value)||null;save();renderData();};
+$("#addWeight").onclick=()=>{const d=$("#logDate").value,w=parseFloat($("#logWeight").value);
+  if(!d||!w){alert("填一下日期和体重");return;}state.weightLog=state.weightLog.filter(x=>x.date!==d);state.weightLog.push({date:d,weight:w});
+  $("#logWeight").value="";save();renderData();};
+function drawWeightChart(log,target){const box=$("#weightChart");
+  if(log.length<1){box.innerHTML=`<div style="color:var(--ink-2);font-size:13px;padding:14px 2px;text-align:center">记录两次以上就会出现趋势曲线</div>`;return;}
+  const W=300,H=120,pad=24;const ws=log.map(e=>e.weight);let mn=Math.min(...ws),mx=Math.max(...ws);
+  if(target){mn=Math.min(mn,target);mx=Math.max(mx,target);}if(mn===mx){mn-=1;mx+=1;}mn-=1;mx+=1;
+  const x=i=>pad+(log.length===1?0.5:i/(log.length-1))*(W-pad*2);
+  const y=v=>H-pad-((v-mn)/(mx-mn))*(H-pad*2);
+  let path="";log.forEach((e,i)=>{path+=(i?"L":"M")+x(i).toFixed(1)+" "+y(e.weight).toFixed(1)+" ";});
+  let dots=log.map((e,i)=>`<circle cx="${x(i).toFixed(1)}" cy="${y(e.weight).toFixed(1)}" r="3" fill="var(--ink)"/>`).join("");
+  let tline=target?`<line x1="${pad}" y1="${y(target).toFixed(1)}" x2="${W-pad}" y2="${y(target).toFixed(1)}" stroke="var(--accent)" stroke-width="1.5" stroke-dasharray="4 4"/><text x="${W-pad}" y="${(y(target)-5).toFixed(1)}" font-size="9" fill="var(--accent)" text-anchor="end">目标 ${target}</text>`:"";
+  box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">${tline}<path d="${path}" fill="none" stroke="var(--ink)" stroke-width="2" stroke-linejoin="round"/>${dots}</svg>`;
+}
+function doneMinutes(ds){return(state.done[ds]||[]).reduce((s,id)=>s+((exById(id)||{}).minutes||0),0);}
+function totalDoneMinutes(){let t=0;Object.keys(state.done).forEach(ds=>t+=doneMinutes(ds));return t;}
+function weekStartOf(d){const x=new Date(d);const wd=(x.getDay()+6)%7;x.setDate(x.getDate()-wd);x.setHours(0,0,0,0);return x;}
+function bucketsWeek(n){const cur=weekStartOf(new Date());const arr=[];for(let i=n-1;i>=0;i--){const ws=new Date(cur);ws.setDate(cur.getDate()-i*7);
+  let mins=0;for(let k=0;k<7;k++){const dd=new Date(ws);dd.setDate(ws.getDate()+k);mins+=doneMinutes(ymd(dd));}
+  arr.push({label:(ws.getMonth()+1)+"/"+ws.getDate(),mins});}return arr;}
+function bucketsMonth(n){const today=new Date();const arr=[];for(let i=n-1;i>=0;i--){const dt=new Date(today.getFullYear(),today.getMonth()-i,1);
+  const y=dt.getFullYear(),m=dt.getMonth();let mins=0;Object.keys(state.done).forEach(ds=>{const p=ds.split("-");if(+p[0]===y&&+p[1]===m+1)mins+=doneMinutes(ds);});
+  arr.push({label:(m+1)+"月",mins});}return arr;}
+function drawBars(box,data){const W=300,H=132,padB=22,padT=16,padX=6;const max=Math.max(1,...data.map(d=>d.mins));const n=data.length;const gap=(W-padX*2)/n;const bw=Math.min(gap*0.62,30);
+  let s="";data.forEach((d,i)=>{const x=padX+gap*i+(gap-bw)/2;const h=(d.mins/max)*(H-padB-padT);const y=H-padB-h;
+    s+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${bw.toFixed(1)}" height="${Math.max(h,1).toFixed(1)}" rx="3" fill="var(--accent)"/>`;
+    if(d.mins)s+=`<text x="${(x+bw/2).toFixed(1)}" y="${(y-4).toFixed(1)}" font-size="9" font-weight="700" fill="var(--ink)" text-anchor="middle">${d.mins}</text>`;
+    s+=`<text x="${(x+bw/2).toFixed(1)}" y="${H-7}" font-size="9" fill="var(--ink-2)" text-anchor="middle">${d.label}</text>`;});
+  box.innerHTML=`<svg viewBox="0 0 ${W} ${H}" style="width:100%;height:auto;display:block">${s}</svg>`;}
+let statRange="week";
+function renderStats(){const today=new Date();
+  const tot=totalDoneMinutes();$("#totMin").textContent=tot.toLocaleString();$("#totHr").textContent="≈ "+(tot/60).toFixed(1)+" 小时";
+  const data=statRange==="week"?bucketsWeek(8):bucketsMonth(6);drawBars($("#timeChart"),data);
+  const cur=data[data.length-1].mins,prev=data.length>1?data[data.length-2].mins:0,diff=cur-prev,unit=statRange==="week"?"周":"月";
+  $("#timeDelta").innerHTML=`本${unit} <b>${cur}</b> 分钟，比上${unit} <b>${diff>=0?"+":""}${diff}</b> 分钟`;
+  function rate(daysBack){let planned=0,done=0;for(let i=0;i<daysBack;i++){const dt=new Date(today);dt.setDate(today.getDate()-i);
+    const ds=ymd(dt);const wd=(dt.getDay()+6)%7;const ids=planForWeekday(wd);planned+=ids.length;
+    const dn=state.done[ds]||[];done+=ids.filter(id=>dn.includes(id)).length;}return planned?Math.round(done/planned*100):null;}
+  const wk=rate(7);$("#stWeek").textContent=wk===null?"—":wk+"%";
+  let streak=0;for(let i=0;i<400;i++){const dt=new Date(today);dt.setDate(today.getDate()-i);const ds=ymd(dt);const wd=(dt.getDay()+6)%7;
+    const ids=planForWeekday(wd);if(!ids.length){continue;}const dn=state.done[ds]||[];const allDone=ids.every(id=>dn.includes(id));
+    if(allDone)streak++;else{if(i===0)continue;break;}}
+  $("#stStreak").textContent=streak;
+}
+$$("#rangeSeg button").forEach(b=>b.onclick=()=>{statRange=b.dataset.rg;$$("#rangeSeg button").forEach(x=>x.classList.toggle("on",x===b));renderStats();});
+
+/* 弹窗通用 */
+function closeSheets(){$$(".sheet-bg").forEach(s=>s.classList.remove("show"));}
+$$("[data-close]").forEach(b=>b.onclick=closeSheets);
+$$(".sheet-bg").forEach(bg=>bg.onclick=e=>{if(e.target===bg)closeSheets();});
+
+/* 示例 */
+function seedDemo(){state.categories=[
+  {id:"c1",name:"臀腿",color:PALETTE[4],type:"strength"},{id:"c2",name:"肩背",color:PALETTE[1],type:"strength"},
+  {id:"c3",name:"核心",color:PALETTE[5],type:"strength"},{id:"c4",name:"有氧",color:PALETTE[6],type:"cardio"}];
+  state.exercises=[
+    {id:uid(),catId:"c1",kind:"video",platform:"youtube",url:"https://www.youtube.com/watch?v=2MoGxae-zyo",author:"林芊妤",title:"20min瘦大腿",type:"strength",minutes:20},
+    {id:uid(),catId:"c1",kind:"video",platform:"bilibili",url:"https://www.bilibili.com/video/BV1xx",author:"帕梅拉",title:"翘臀训练",type:"strength",minutes:15},
+    {id:uid(),catId:"c2",kind:"video",platform:"youtube",url:"https://www.youtube.com/watch?v=3p8EBPVZ2Iw",author:"",title:"肩背激活",type:"strength",minutes:20},
+    {id:uid(),catId:"c3",kind:"video",platform:"xiaohongshu",url:"https://www.xiaohongshu.com/explore",author:"帕梅拉",title:"核心腹肌8分钟",type:"strength",minutes:10},
+    {id:uid(),catId:"c4",kind:"card",platform:"card",author:"",title:"跑步",type:"cardio",minutes:30},
+    {id:uid(),catId:"c4",kind:"card",platform:"card",author:"",title:"游泳",type:"cardio",minutes:40}];
+  state.prefs={daysPerWeek:4,dailyMin:30,dailyMax:60,cardioPct:50,restDays:[6],notes:""};
+  state.plan={days:generateDays(),createdAt:Date.now(),by:"local"};state.done={};save();go("today");}
+
+renderToday();
+</script>
+</body>
+</html>
